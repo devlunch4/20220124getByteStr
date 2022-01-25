@@ -56,7 +56,7 @@ public class getByteStrList {
                 // 공백 구분자를 통해 분할을 실시
                 String chunk = s.substring(0, endPos);
                 ss.add(chunk);
-                in = CharBuffer.wrap(s.substring(endPos) + in.toString());
+                in = CharBuffer.wrap(s.substring(endPos) + in);
                 newPos -= s.substring(endPos).length();
             }
             // add what has been encoded to the list
@@ -69,7 +69,7 @@ public class getByteStrList {
                     byte[] bLastElem = lastElement.getBytes(encoding);
                     byte[] bIn = in.toString().getBytes(encoding);
                     if (bLastElem.length + bIn.length <= maxsize) {
-                        ss.set(ss.size() - 1, lastElement + in.toString());
+                        ss.set(ss.size() - 1, lastElement + in);
                     } else {
                         ss.add(in.toString());
                     }
