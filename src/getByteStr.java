@@ -4,8 +4,8 @@ import java.util.List;
 public class getByteStr {
 
     public static void main(String[] args) {
-        String org = "안녕하세요 반갑습니다. 텍스트를 바이트 크기로 자르고 있습니다.";
-        List<String> rst_lsit = substringByBytes(org, 0, 4);
+        String org = "+선하증권은 로드 포트 및 배출 포트의 이름";
+        List<String> rst_lsit = substringByBytes(org, 0, 80);
         System.out.println(rst_lsit);
 
     }
