@@ -1,0 +1,20 @@
+def sentence_split(sentence):
+    # |[^A-Z][ ][(][A-Za-z][)]
+    #|[.][0-9]{1,2}[)]
+    sentence = re.sub('^[+-]+','',sentence)
+    sentence = re.sub('[ ]+',' ',sentence)
+    ahead_split_list1 = re.findall('''([ ][0-1]?[0-9][.][^0-9]|[ ][0-9][ ][-]|[ ][(][0-1]?[0-9][)]|[.][(][0-1]?[0-9][)]|[ ][(][+][0-1]?[0-9][)]|[.][(][+][0-1]?[0-9][)]|[ ][+][0-1]?[0-9]|[ ][(][A-Ra-r][)]|[.][(][A-Ra-r][)]|[.][A-Za-z][)]|[ ][+]+[A-Za-z][)]|[ ][A-Za-z][.][ ]|[.][a-z][.][ ]|[ ][Ii]+[)]|[ ][+]+[ ]?[A-Z]|[.][+]+|[ ][-]+|[.][-]+)''',sentence)
+    ahead_split_list2 = re.findall('''([^0-9][.][0-1]?[0-9][.][^0-9]+|[^0-9][.][0-1]?[0-9][)]|[A-Z][.][A-Z]{1,2}[)]|[.][ ][0-1]?[0-9][)]|[.,][ ][+]+)''',sentence)
+    for ahead_token in ahead_split_list1:
+        sentence = sentence.replace(ahead_token , ahead_token[0]+'\n'+ahead_token[1:])
+    for ahead_token in ahead_split_list2:
+        sentence = sentence.replace(ahead_token , ahead_token[0:2]+'\n'+ahead_token[2:])
+    
+    tail_split_list = re.findall('''([A-Z]{2,}[.]{2}[^\n,]|[A-Z]{2,}[.][ ][^\n])''',sentence)
+    for tail_token in tail_split_list:
+        sentence = sentence.replace(tail_token , tail_token[:-1] + '\n'+tail_token[-1])
+    sentence = sentence.replace('NO. \n','NO. ').replace('NO.\n','NO.').replace('REF. \n','REF. ').replace('REF.\n','REF.')
+    sentence = sentence.replace('\n\n','\n')
+    sentence = sentence.replace('CLAUSE (A)\n','CLAUSE (A)').replace('CLAUSES (A)\n','CLAUSES (A)').replace('ICC (A)\n','ICC (A)')
+    sentence = sentence.replace('S.A. \n','S.A. ').replace('S.A.\n','S.A.')
+    return list(filter(lambda x: len(x)>0,sentence.split('\n')))
