@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class splitSentenceByByteSizeNotLossWords {
+public class splitSentenceByByteSizeNotLossWords_202202241005 {
 
     public static void main(String[] args) throws Exception {
 
@@ -21,17 +21,13 @@ public class splitSentenceByByteSizeNotLossWords {
 
         srcStr += "Mid-1925 found the future of broadcasting under further consideration, this time by the Crawford committee. 낮게 하면 더 정확합니다. By now, the BBC, under Reith's leadership, had forged a consensus favouring a continuation of the unified (monopoly) broadcasting service, but more money was still required to finance rapid expansion. Wireless manufacturers were anxious to exit the loss-making consortium with Reith keen that the BBC be seen as a public service rather than a commercial enterprise. The recommendations of the Crawford Committee were published in March the following year and were still under consideration by the GPO when the 1926 general strike broke out in May. The strike temporarily interrupted newspaper production, and with restrictions on news bulletins waived, the BBC suddenly became the primary source of news for the duration of the crisis";
 
-        srcStr ="선불'과 SUN HING PAPER COMPANY LIMITED, HUNG HING PRINTING CENTER, 17-19 DAI ";
-
-        srcStr = "CHASUS33에 USD1, 136.78을 EM과 함께 A/C에 차감해 달라고 good day.";
-
         String charset = "CP933";
         int wannaOutputByteSize = 80;
 
         int setByteSize = wannaOutputByteSize; // for safe output.
         //setByteSize = Math.max(setByteSize, 5); // for safe output KOREAN.
         //List<String> split_List = splitSentenceByByteSizeWithoutLossOfWords(srcStr, charset, setByteSize);
-        List<String> split_List = splitSentenceByByteSizeWithoutLossOfWords(srcStr, charset, setByteSize);
+        List<String> split_List = bbbb(srcStr, charset, setByteSize);
 
         // check Row info in list
         System.out.println("split List: " + split_List);
