@@ -4,10 +4,9 @@ import java.util.List;
 public class getByteStr {
 
     public static void main(String[] args) {
-        String org = "+선하증권은 로드 포트 및 배출 포트의 이름";
-        List<String> rst_lsit = substringByBytes(org, 0, 80);
-        System.out.println(rst_lsit);
-
+        String org = "미디엄은 쓰고, 읽고, 연결하는 장소입니다. 어떤 주제에든 쉽고 자유롭게 여러분의 생각을 올리고 수백만 명의 독자와 연결할 수 있습니다. ";
+        List<String> rst_list = substringByBytes(org, 0, 80);
+        System.out.println(rst_list);
     }
 
     public static List<String> substringByBytes(String str, int beginBytes, int endBytes) {
@@ -22,11 +21,13 @@ public class getByteStr {
         if (endBytes < 1) {
             return null;
         }
+
         int len = str.length();
         int beginIndex = -1;
         int endIndex = 0;
         int curBytes = 0;
         String ch = null;
+
         for (int i = 0; i < len; i++) {
             ch = str.substring(i, i + 1);
             curBytes += ch.getBytes().length;
